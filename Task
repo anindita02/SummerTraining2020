@@ -11,6 +11,7 @@ $ tree A
 useradd -s /usr/bin/date anindita
 setafcl -m u:anindita:rwx /usr/bin/date
 su - anindita
+exit
 chmod -x /usr/bin/date
  
 ---
