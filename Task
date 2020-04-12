@@ -8,8 +8,10 @@ $ tree A
 ###task 2
 ##answer of Permission for date command
 ---
+chmod a-x /usr/bin/date
+ls -l
 useradd -s /usr/bin/date anindita
-setafcl -m u:anindita:rwx /usr/bin/date
+setfacl -m u:anindita:rwx /usr/bin/date
 su - anindita
 exit
 chmod -x /usr/bin/date
