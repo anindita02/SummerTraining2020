@@ -1,0 +1,48 @@
+###task 1
+##answer of Create directory structure
+---
+$ mkdir -p A/{B/{D/{I/{M/{Z}},J/{L/{Z}}},E/{H/{L/{Z}}}},C/{F/{H/{L/{Z}}},G/{K/{L/{Z}}}}}
+$ tree A
+---
+
+###task 2
+##answer of Permission for date command
+---
+useradd -s /usr/bin/date anindita
+setafcl -m u:anindita:rwx /usr/bin/date
+su - anindita
+chmod -x /usr/bin/date
+ 
+---
+
+###task 3
+##answer of User Data Copy
+---
+adduser A
+su -A
+mkdir file
+touch file/data.txt
+exit
+adduser B
+su -B
+mkdir file1
+touch file1/entry.txt
+sudo cp -r /home/B/usr/bin/file1 /home/A/usr/bin
+exit
+su -A
+sudo cp -r /home/A/usr/bin/file /home/B/usr/bin 
+---
+
+###task 4
+##answer of Run Cal command for 10 seconds and store the output in a file
+---
+declare -i x=10
+c=$(date +%S) 
+n='expr $c + $x'
+while [ $c -lt $n ]
+do 
+cal >>/tmp/output.txt 
+$(( c++ ))
+done
+---
+
