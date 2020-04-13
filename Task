@@ -44,7 +44,7 @@ c=$(date +%S)
 n='expr $c + $x'
 while [ $c -lt $n ]
 do 
-cal >/tmp/output.txt 
+cal >>/tmp/output.txt 
 $(( c++ ))
 done
 ---
