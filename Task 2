@@ -26,7 +26,7 @@ $ docker ps -a --format "table {{.Names}}\t{{.CreatedAt}}" >>list.txt
 ##task 3
 #To run a container with own custom Docker image, where parent process will be firefox
 ---
-docker pull jlesage\firefox
+docker pull jlesage/firefox
 docker run -d --restart unless-stopped --name anindita jlesage/firefox 
 cd .\Desktop3
 cd .\project-html-website
