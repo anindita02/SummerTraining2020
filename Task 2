@@ -31,7 +31,7 @@ docker run -d --restart unless-stopped --name anindita jlesage/firefox
 cd .\Desktop3
 cd .\project-html-website
 docker build -t anihtml:v1
-docker exec anindita anihtml:v1
+docker exec anindita -p 1122:80 anihtml:v1
 ---
 
 ##task 4
