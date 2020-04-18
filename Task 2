@@ -1,0 +1,47 @@
+##task 1
+# To write python code/shell script to launch 100 containers that keeps running even after reboot
+---
+#!/bin/bash
+count=1
+while [ $count -le 100 ]
+do
+  if [ $count -lt 26 ]
+    sudo docker container run -d --restart unless-stopped --name adhocnw$count alpine ping 8.8.8.8
+  elif [ $count -ge 26 && $count -le 50 ]
+    sudo docker container run -d --restart unless-stopped --name adhocnw$count fedora ping 8.8.8.8
+  elif [ $count -ge 51 && $count -le 75 ]
+    sudo docker container run -d --restart unless-stopped --name adhocnw$count centos ping 8.8.8.8
+  else
+    sudo docker container run -d --restart unless-stopped --name adhocnw$count java ping 8.8.8.8
+  $((count++))
+done
+---
+
+##task 2
+# To write a combination of Docker and OS commands, to get the list of Name,Creation time of all containers and store them in a text file
+---
+$ docker ps -a --format "table {{.Names}}\t{{.CreatedAt}}" >>list.txt
+---
+
+##task 3
+#To run a container with own custom Docker image, where parent process will be firefox
+---
+docker pull jlesage\firefox
+docker run -d --restart unless-stopped --name anindita jlesage/firefox 
+cd .\Desktop3
+cd .\project-html-website
+docker build -t anihtml:v1
+docker exec anindita anihtml:v1
+---
+
+##task 4
+#To get RAM & CPU consumption from 100 containers(from task 1) and store in a text file
+---
+#!/bin/bash
+count=1
+while [ $count -le 100 ]
+do
+    docker stats --all --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}" adhocnw$count >>data1.txt
+    $((count++))
+done
+
